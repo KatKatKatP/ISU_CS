@@ -14,7 +14,7 @@ public class Main {
         }
 
         //establish a changing variable for the card at the top of the deck
-
+        //
         sc.close();
     }
 }
