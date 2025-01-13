@@ -29,9 +29,9 @@ public class Main {
         boolean wildDraw4 = false;
         //might not need these
         //initialize array 1-100
-        String card = "";
         ArrayList<String> deck = new ArrayList<String>();
         for (int i = 0; i < 100; i++) {
+            String card = "";
             int shuffler = (int) (Math.random() * (100 - 1 + 1) + 1);
             if (shuffler < 24) {
                 special = true;
@@ -103,72 +103,76 @@ public class Main {
                 }
             } else {
                 shuffler = (int) (Math.random() * (76 - 1 + 1) + 1);
+
                 if (shuffler <= 19) {
                     red = true;
                     card += "R";
                 }
+                if (shuffler > 19 && shuffler <= 38) {
+                    green = true;
+                    card += "G";
+                }
+                if (shuffler > 38 && shuffler <= 57) {
+                    yellow = true;
+                    card += "Y";
+                }
+                if (shuffler > 57 && shuffler <= 76) {
+                    blue = true;
+                    card += "B";
+                }
+
+                shuffler = (int) (Math.random() * (19 - 1 + 1) + 1);
+                switch (shuffler) {
+                    case 1:
+                        card += 0;
+                        break;
+                    case 2:
+                    case 3:
+                        card += 1;
+                        break;
+                    case 4:
+                    case 5:
+                        card += 2;
+                        break;
+                    case 6:
+                    case 7:
+                        card += 3;
+                        break;
+                    case 8:
+                    case 9:
+                        card += 4;
+                        break;
+                    case 10:
+                    case 11:
+                        card += 5;
+                        break;
+                    case 12:
+                    case 13:
+                        card += 6;
+                        break;
+                    case 14:
+                    case 15:
+                        card += 7;
+                        break;
+                    case 16:
+                    case 17:
+                        card += 8;
+                        break;
+                    case 18:
+                    case 19:
+                        card += 9;
+                        break;
+                }
             }
-            if (shuffler > 19 && shuffler <= 38) {
-                green = true;
-                card += "G";
-            }
-            if (shuffler > 38 && shuffler <= 57) {
-                yellow = true;
-                card += "Y";
-            }
-            if (shuffler > 57 && shuffler <= 76) {
-                blue = true;
-                card += "B";
-            }
-            shuffler = (int) (Math.random() * (19 - 1 + 1) + 1);
-            switch (shuffler) {
-                case 1:
-                    card += 0;
-                    break;
-                case 2:
-                case 3:
-                    card += 1;
-                    break;
-                case 4:
-                case 5:
-                    card += 2;
-                    break;
-                case 6:
-                case 7:
-                    card += 3;
-                    break;
-                case 8:
-                case 9:
-                    card += 4;
-                    break;
-                case 10:
-                case 11:
-                    card += 5;
-                    break;
-                case 12:
-                case 13:
-                    card += 6;
-                    break;
-                case 14:
-                case 15:
-                    card += 7;
-                    break;
-                case 16:
-                case 17:
-                    card += 8;
-                    break;
-                case 18:
-                case 19:
-                    card += 9;
-                    break;
-            }
+            deck.add(card);
+
         }
 
-        deck.add(card);
-        System.out.println(deck + " , ");
+        System.out.println(deck);
 
 
-    //pick from array.size
+
+        //pick from array.size
     //clear the picked one
     //if picked one is greater than 24, boolean special = false
     // ig less than 24, special = true
