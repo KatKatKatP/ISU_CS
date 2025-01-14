@@ -254,15 +254,6 @@ public class Main {
 
         }
         System.out.println(deck);
-
-
-    //count is good i think
-        //pick from array.size
-    //clear the picked one
-    //if picked one is greater than 24, boolean special = false
-    // ig less than 24, special = true
-    // array out of 8, pick random, if
-
         sc.close();
     }
 }
