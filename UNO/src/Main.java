@@ -27,15 +27,18 @@ public class Main {
         boolean draw = false;
         boolean skip = false;
         boolean wildDraw4 = false;
-        int countSpecial = 0;
-        int countNonSpecial = 0;
         //might not need these
         //initialize array 1-100
+
+        ArrayList<Integer> countSpecialcolor = new ArrayList<Integer>();
+        for(int j = 1; j <= 16; j++) {
+            countSpecialcolor.add(j);
+        }
         ArrayList<String> deck = new ArrayList<String>();
         for (int i = 0; i < 100; i++) {
             String card = "";
             int shuffler = (int) (Math.random() * (100 - 1 + 1) + 1);
-            if (shuffler < 24 && countSpecial != 24) {
+            if (shuffler < 24) {
                 special = true;
                 card += "S";
                 shuffler = (int) (Math.random() * (24 - 1 + 1) + 1);
@@ -44,57 +47,130 @@ public class Main {
                     card += "C";
                     shuffler = (int) (Math.random() * (16 - 1 + 1) + 1);
                     switch (shuffler) {
+
                         case 1:
                         case 2:
+                            if(countSpecialcolor.contains(1)){
+                                red = true;
+                                card += "RD";
+                                draw = true;
+                                countSpecialcolor.remove(countSpecialcolor.indexOf(1));
+                            }
+                            else if(countSpecialcolor.contains(2)) {
                             red = true;
                             card += "RD";
                             draw = true;
+                            countSpecialcolor.remove(countSpecialcolor.indexOf(2));
+                        }
                             break;
                         case 3:
                         case 4:
-                            red = true;
-                            card += "RS";
-                            skip = true;
+                            if(countSpecialcolor.contains(3)) {
+                                red = true;
+                                card += "RS";
+                                skip = true;
+                                countSpecialcolor.remove(countSpecialcolor.indexOf(3));
+                            }
+                            else if(countSpecialcolor.contains(4)) {
+                                red = true;
+                                card += "RS";
+                                skip = true;
+                                countSpecialcolor.remove(countSpecialcolor.indexOf(4));
+                            }
                             break;
                         case 5:
                         case 6:
-                            yellow = true;
-                            card += "YD";
-                            draw = true;
+                            if(countSpecialcolor.contains(5)) {
+                                yellow = true;
+                                card += "YD";
+                                draw = true;
+                                countSpecialcolor.remove(countSpecialcolor.indexOf(5));
+                            }
+                            else if(countSpecialcolor.contains(6)) {
+                                yellow = true;
+                                card += "YD";
+                                draw = true;
+                                countSpecialcolor.remove(countSpecialcolor.indexOf(6));
+                            }
                             break;
                         case 7:
                         case 8:
-                            yellow = true;
-                            card += "YS";
-                            skip = true;
+                            if(countSpecialcolor.contains(7)) {
+                                yellow = true;
+                                card += "YS";
+                                skip = true;
+                                countSpecialcolor.remove(countSpecialcolor.indexOf(7));
+                            }
+                            else if(countSpecialcolor.contains(8)){
+                                yellow = true;
+                                card += "YS";
+                                skip = true;
+                                countSpecialcolor.remove(countSpecialcolor.indexOf(8));
+                            }
                             break;
                         case 9:
                         case 10:
-                            blue = true;
-                            card += "BL";
-                            draw = true;
+                            if(countSpecialcolor.contains(9)) {
+                                blue = true;
+                                card += "BL";
+                                draw = true;
+                                countSpecialcolor.remove(countSpecialcolor.indexOf(9));
+                            }
+                            else if(countSpecialcolor.contains(10)) {
+                                blue = true;
+                                card += "BL";
+                                draw = true;
+                                countSpecialcolor.remove(countSpecialcolor.indexOf(10));
+                            }
                             break;
                         case 11:
                         case 12:
-                            blue = true;
-                            card += "BS";
-                            skip = true;
+                            if(countSpecialcolor.contains(11)) {
+                                blue = true;
+                                card += "BS";
+                                skip = true;
+                                countSpecialcolor.remove(countSpecialcolor.indexOf(11));
+                            }
+                            else if (countSpecialcolor.contains(12)) {
+                                blue = true;
+                                card += "BS";
+                                skip = true;
+                                countSpecialcolor.remove(countSpecialcolor.indexOf(12));
+                            }
                             break;
                         case 13:
                         case 14:
-                            green = true;
-                            card += "GD";
-                            draw = true;
+                            if(countSpecialcolor.contains(13)) {
+                                green = true;
+                                card += "GD";
+                                draw = true;
+                                countSpecialcolor.remove(countSpecialcolor.indexOf(13));
+                            }
+                            else if(countSpecialcolor.contains(14)) {
+                                green = true;
+                                card += "GD";
+                                draw = true;
+                                countSpecialcolor.remove(countSpecialcolor.indexOf(14));
+                            }
                             break;
                         case 15:
                         case 16:
-                            green = true;
-                            card += "GS";
-                            skip = true;
+                            if(countSpecialcolor.contains(15)) {
+                                green = true;
+                                card += "GS";
+                                skip = true;
+                                countSpecialcolor.remove(countSpecialcolor.indexOf(15));
+                            }
+                            else if(countSpecialcolor.contains(16)) {
+                                green = true;
+                                card += "GS";
+                                skip = true;
+                                countSpecialcolor.remove(countSpecialcolor.indexOf(16));
+                            }
                             break;
                     }
                 }
-                if (shuffler < 8) {
+                if (shuffler <= 8) {
                     if (shuffler < 4) {
                         wild = true;
                         card += "W";
@@ -103,9 +179,8 @@ public class Main {
                         card += "D4";
                     }
                 }
-                countSpecial++;
             }
-             if (shuffler > 24 && countNonSpecial != 76) {
+             if (shuffler > 24) {
                 shuffler = (int) (Math.random() * (76 - 1 + 1) + 1);
                 if (shuffler <= 19) {
                     red = true;
@@ -166,16 +241,14 @@ public class Main {
                         card += 9;
                         break;
                 }
-                countNonSpecial++;
             }
             deck.add(card);
 
         }
-
         System.out.println(deck);
 
 
-
+    //count is good i think
         //pick from array.size
     //clear the picked one
     //if picked one is greater than 24, boolean special = false
