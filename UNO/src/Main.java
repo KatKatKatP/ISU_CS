@@ -27,13 +27,15 @@ public class Main {
         boolean draw = false;
         boolean skip = false;
         boolean wildDraw4 = false;
+        int countSpecial = 0;
+        int countNonSpecial = 0;
         //might not need these
         //initialize array 1-100
         ArrayList<String> deck = new ArrayList<String>();
         for (int i = 0; i < 100; i++) {
             String card = "";
             int shuffler = (int) (Math.random() * (100 - 1 + 1) + 1);
-            if (shuffler < 24) {
+            if (shuffler < 24 && countSpecial != 24) {
                 special = true;
                 card += "S";
                 shuffler = (int) (Math.random() * (24 - 1 + 1) + 1);
@@ -101,9 +103,10 @@ public class Main {
                         card += "D4";
                     }
                 }
-            } else {
+                countSpecial++;
+            }
+             if (shuffler > 24 && countNonSpecial != 76) {
                 shuffler = (int) (Math.random() * (76 - 1 + 1) + 1);
-
                 if (shuffler <= 19) {
                     red = true;
                     card += "R";
@@ -163,6 +166,7 @@ public class Main {
                         card += 9;
                         break;
                 }
+                countNonSpecial++;
             }
             deck.add(card);
 
@@ -181,3 +185,4 @@ public class Main {
         sc.close();
     }
 }
+// establish count
