@@ -126,6 +126,7 @@ public class Main {
                                 draw = true;
                                 countSpecialcolor.remove(countSpecialcolor.indexOf(10));
                             }
+
                             break;
                         case 11:
                             if (countSpecialcolor.contains(11)) {
