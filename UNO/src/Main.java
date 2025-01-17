@@ -31,7 +31,6 @@ public class Main {
         for (int i = 1; i <= 100; i++) {
             card = "";
             if (i <= 24) {
-                card += "S";
                 if (i <= 4) {
                     card += "WD4";
                 } else if (i <= 8) {
@@ -291,10 +290,46 @@ public class Main {
         System.out.println("Here is the starting card:" + topCard1);
 
         boolean turn = true;
+        boolean wildDrawFour = false;
+        boolean wild = false;
+        boolean red = false;
+        boolean blue = false;
+        boolean yellow = false;
+        boolean green = false;
+        boolean draw = false;
+        boolean skip = false;
+        int num = 0;
         while(turn){
             System.out.println(player1name + "'s turn! Here is your hand:" + player1hand);
+            //check qualifications for topCard
+            String[] specials = {"WD4", "W","RD","RS","YD","YS", "BD", "BS", "GD", "GS"};
+            if (topCard1.equals("WD4")){
+                wildDrawFour = true;
+            }
+              else if()
 
+           else{
+                if (topCard1.contains("B")){
+                    blue = true;
+                    num = topCard1.charAt(2);
+                }
+                else if (topCard1.contains("R")){
+                    red = true;
+                    num = topCard1.charAt(2);
+                }
+                else if (topCard1.contains("Y")){
+                    yellow = true;
+                    num = topCard1.charAt(2);
+                }
+                else if (topCard1.contains("G")){
+                    green = true;
+                    num = topCard1.charAt(2);
+                }
+            }
+            //check qualifications for playable card
+            System.out.println("You do/do not have any playable cards.");
         }
+
 
 
 
