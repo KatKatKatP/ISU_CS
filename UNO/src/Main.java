@@ -312,7 +312,7 @@ public class Main {
             }
             else if(topCard1.contains("R")){
                 red = true;
-                if (topCard1.contains("D"){
+                if (topCard1.contains("D")){
                     draw = true;
                 }
 
