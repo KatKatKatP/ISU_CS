@@ -27,6 +27,7 @@ public class Main {
         }
 
         ArrayList<String> deck = new ArrayList<String>();
+        ArrayList<String> discard = new ArrayList<String>();
         String card;
         for (int i = 1; i <= 100; i++) {
             card = "";
@@ -291,7 +292,7 @@ public class Main {
 
         boolean turn = true;
         boolean wildDrawFour = false;
-        boolean wild = false;
+        boolean wild= false;
         boolean red = false;
         boolean blue = false;
         boolean yellow = false;
@@ -306,9 +307,17 @@ public class Main {
             if (topCard1.equals("WD4")){
                 wildDrawFour = true;
             }
-              else if()
+            else if(topCard1.equals("W")){
+                wild = true;
+            }
+            else if(topCard1.contains("R")){
+                red = true;
+                if (topCard1.contains("D"){
+                    draw = true;
+                }
 
-           else{
+            }
+            else{
                 if (topCard1.contains("B")){
                     blue = true;
                     num = topCard1.charAt(2);
