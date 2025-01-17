@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.Scanner;
 import java.util.ArrayList;
 public class Main {
@@ -216,6 +217,10 @@ public class Main {
             deck.add(card);
 
         }
-         System.out.println(deck);
+        System.out.println("Here is the unshuffled deck:");
+        System.out.println(deck);
+        Collections.shuffle(deck);
+        System.out.println("Here is the shuffled deck:");
+        System.out.println(deck);
     }
 }
