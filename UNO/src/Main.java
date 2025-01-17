@@ -16,55 +16,57 @@ public class Main {
 
         ArrayList<String> deck = new ArrayList<String>();
         String card = "";
-        for (int i = 1; i <= 101; i++){
+        for (int i = 1; i <= 100; i++){
+            card = "";
             if (i<=24){
-                card = "";
                 card += "S";
-                if (i<4){
-                    card += "D4";
+                if (i<=4){
+                    card += "WD4";
                 }
-                else if (i <=8 && i > 4){
+                else if (i <=8){
                     card +="W";
                 }
-                switch (i){
-                    case 1:
-                    case 2:
-                        card += "RD";
-                        break;
-                    case 3:
-                    case 4:
-                        card += "RS";
-                        break;
-                    case 5:
-                    case 6:
-                        card += "YD";
-                        break;
-                    case 7:
-                    case 8:
-                        card += "YS";
-                        break;
-                    case 9:
-                    case 10:
-                        card += "BD";
-                        break;
-                    case 11:
-                    case 12:
-                        card += "BS";
-                        break;
-                    case 13:
-                    case 14:
-                        card += "GD";
-                        break;
-                    case 15:
-                    case 16:
-                        card += "GS";
-                        break;
-                    default:
-                        break;
+                else {
+                    switch (i){
+                        case 9:
+                        case 10:
+                            card += "RD";
+                            break;
+                        case 11:
+                        case 12:
+                            card += "RS";
+                            break;
+                        case 13:
+                        case 14:
+                            card += "YD";
+                            break;
+                        case 15:
+                        case 16:
+                            card += "YS";
+                            break;
+                        case 17:
+                        case 18:
+                            card += "BD";
+                            break;
+                        case 19:
+                        case 20:
+                            card += "BS";
+                            break;
+                        case 21:
+                        case 22:
+                            card += "GD";
+                            break;
+                        case 23:
+                        case 24:
+                            card += "GS";
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
             else{
-                if (i<= 44){
+                if (i< 44){
                     card += "R";
                     switch(i){
                         case 25:
@@ -84,90 +86,90 @@ public class Main {
                         case 34:
                         case 35:
                             card += "5"; break;
+                        case 36:
                         case 37:
-                        case 38:
                             card += "6"; break;
+                        case 38:
                         case 39:
-                        case 40:
                             card += "7"; break;
+                        case 40:
                         case 41:
-                        case 42:
                             card += "8"; break;
+                        case 42:
                         case 43:
-                        case 44:
                             card += "9"; break;
                         default:
                             break;
                     }
                 }
-                else if(i<= 63){
+                else if(i< 63){
                     card += "G";
                     switch(i){
-                        case 45:
+                        case 44:
                             card += "0"; break;
+                        case 45:
                         case 46:
-                        case 47:
                             card += "1"; break;
+                        case 47:
                         case 48:
-                        case 49:
                             card += "2"; break;
+                        case 49:
                         case 50:
-                        case 51:
                             card += "3"; break;
+                        case 51:
                         case 52:
-                        case 53:
                             card += "4"; break;
+                        case 53:
                         case 54:
-                        case 55:
                             card += "5"; break;
+                        case 55:
                         case 56:
-                        case 57:
                             card += "6"; break;
+                        case 57:
                         case 58:
-                        case 59:
                             card += "7"; break;
+                        case 59:
                         case 60:
-                        case 61:
                             card += "8"; break;
+                        case 61:
                         case 62:
-                        case 63:
                             card += "9"; break;
                         default:
                             break;
                     }
                 }
-                else if (i<= 81){
+                else if (i< 82){
                     card += "Y";
                     int num = 0;
                     switch(i){
-                        case 64:
+                        case 63:
                             card += "0"; break;
+                        case 64:
                         case 65:
-                        case 66:
                             card += "1"; break;
+                        case 66:
                         case 67:
-                        case 68:
                             card += "2"; break;
+                        case 68:
                         case 69:
-                        case 70:
                             card += "3"; break;
+                        case 70:
                         case 71:
-                        case 72:
                             card += "4"; break;
+                        case 72:
                         case 73:
-                        case 74:
                              card += "5"; break;
+                        case 74:
                         case 75:
-                        case 76:
                              card += "6"; break;
+                        case 76:
                         case 77:
-                        case 78:
                              card += "7"; break;
+                        case 78:
                         case 79:
-                        case 80:
                              card += "8"; break;
+                        case 80:
                         case 81:
-                        case 82:
                             card += "9"; break;
                         default:
                             break;
@@ -177,34 +179,34 @@ public class Main {
                 else{
                     card += "B";
                     switch (i){
-                        case 83:
+                        case 82:
                             card += "0"; break;
+                        case 83:
                         case 84:
-                        case 85:
                             card += "1"; break;
+                        case 85:
                         case 86:
-                        case 87:
                             card += "2"; break;
+                        case 87:
                         case 88:
-                        case 89:
                             card += "3"; break;
+                        case 89:
                         case 90:
-                        case 91:
                             card += "4"; break;
+                        case 91:
                         case 92:
-                        case 93:
                             card += "5"; break;
+                        case 93:
                         case 94:
-                        case 95:
                             card += "6"; break;
+                        case 95:
                         case 96:
-                        case 97:
                             card += "7"; break;
+                        case 97:
                         case 98:
-                        case 99:
                             card += "8"; break;
+                        case 99:
                         case 100:
-                        case 101:
                             card += "9"; break;
                         default:
                             break;
