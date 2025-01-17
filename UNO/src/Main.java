@@ -16,13 +16,14 @@ public class Main {
 
         ArrayList<String> deck = new ArrayList<String>();
         String card = "";
-        for (int i = 1; i <= 100; i++){
+        for (int i = 1; i <= 101; i++){
             if (i<=24){
+                card = "";
                 card += "S";
                 if (i<4){
                     card += "D4";
                 }
-                else if (i <=8 && i >4){
+                else if (i <=8 && i > 4){
                     card +="W";
                 }
                 switch (i){
@@ -137,11 +138,80 @@ public class Main {
                 }
                 else if (i<= 81){
                     card += "Y";
+                    int num = 0;
+                    switch(i){
+                        case 64:
+                            card += "0"; break;
+                        case 65:
+                        case 66:
+                            card += "1"; break;
+                        case 67:
+                        case 68:
+                            card += "2"; break;
+                        case 69:
+                        case 70:
+                            card += "3"; break;
+                        case 71:
+                        case 72:
+                            card += "4"; break;
+                        case 73:
+                        case 74:
+                             card += "5"; break;
+                        case 75:
+                        case 76:
+                             card += "6"; break;
+                        case 77:
+                        case 78:
+                             card += "7"; break;
+                        case 79:
+                        case 80:
+                             card += "8"; break;
+                        case 81:
+                        case 82:
+                            card += "9"; break;
+                        default:
+                            break;
+                    }
                 }
+
                 else{
                     card += "B";
+                    switch (i){
+                        case 83:
+                            card += "0"; break;
+                        case 84:
+                        case 85:
+                            card += "1"; break;
+                        case 86:
+                        case 87:
+                            card += "2"; break;
+                        case 88:
+                        case 89:
+                            card += "3"; break;
+                        case 90:
+                        case 91:
+                            card += "4"; break;
+                        case 92:
+                        case 93:
+                            card += "5"; break;
+                        case 94:
+                        case 95:
+                            card += "6"; break;
+                        case 96:
+                        case 97:
+                            card += "7"; break;
+                        case 98:
+                        case 99:
+                            card += "8"; break;
+                        case 100:
+                        case 101:
+                            card += "9"; break;
+                        default:
+                            break;
+                    }
                 }
             }
+            deck.add(card);
 
         }
          System.out.println(deck);
