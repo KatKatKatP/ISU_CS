@@ -5,18 +5,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         //NAME: Katerina Praskurnin
-        //How many players?
-//        System.out.println("Welcome to UNO! How many people want to play?");
-//     int players = sc.nextInt();
-//     register names for players - IN PROGRESS ( issue - need 4 separate variables )
-//        for (int player = 1; player <= players; player++) {
-//            //register names for players
-//            System.out.println("What is player " + player + "'s name?");
-//            String name = sc.nextLine();
-//        }
+
+        System.out.println("Welcome to UNO! What is player one's name?");
+        String player1name= sc.nextLine();
+
+        System.out.println("What is player two's name?");
+        String player2name = sc.nextLine();
 
         ArrayList<String> deck = new ArrayList<String>();
-        String card = "";
+        String card;
         for (int i = 1; i <= 100; i++){
             card = "";
             if (i<=24){
@@ -141,7 +138,6 @@ public class Main {
                 }
                 else if (i< 82){
                     card += "Y";
-                    int num = 0;
                     switch(i){
                         case 63:
                             card += "0"; break;
@@ -217,10 +213,34 @@ public class Main {
             deck.add(card);
 
         }
-        System.out.println("Here is the unshuffled deck:");
+        System.out.println("Here is the un-shuffled deck:");
         System.out.println(deck);
         Collections.shuffle(deck);
         System.out.println("Here is the shuffled deck:");
         System.out.println(deck);
+
+        sc.close();
+        int index = 0;
+        String topCard;
+        ArrayList<String> player1hand = new ArrayList<String>();
+        ArrayList<String> player2hand = new ArrayList<String>();
+        for (int dealCard = 0; dealCard < 7; dealCard++){
+            topCard = deck.get(index);
+            player1hand.add(topCard);
+            deck.remove(index);
+        }
+        for (int dealCard = 0; dealCard < 7; dealCard++){
+            topCard = deck.get(index);
+            player2hand.add(topCard);
+            deck.remove(index);
+        }
+
+        System.out.println(player1name +" starts the game! Here is your deck:");
+        boolean game = true;
+        while (game){}
+        System.out.println(player1hand);
+
+        System.out.println(player2hand);
+
     }
 }
