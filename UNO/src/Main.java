@@ -266,7 +266,6 @@ public class Main {
         System.out.println("Here is the shuffled deck:");
         System.out.println(deck);
 
-        sc.close();
         int index = 0;
         String topCard1;
         ArrayList<String> player1hand = new ArrayList<String>();
@@ -288,9 +287,13 @@ public class Main {
             deck.remove(0);
             topCard1 = deck.get(0);
         }
-        System.out.println("Here is the starting card:" + topCard1);
 
-        boolean turn = true;
+        System.out.println("Here is the starting card:" + topCard1);
+        ArrayList<String> playedDeck = new ArrayList<String>();
+        deck.remove(0);
+        playedDeck.add(topCard1);
+
+        boolean player1turn = true;
         boolean wildDrawFour = false;
         boolean wild= false;
         boolean red = false;
@@ -300,10 +303,12 @@ public class Main {
         boolean draw = false;
         boolean skip = false;
         int num = 0;
-        while(turn){
+        while(player1turn){
             System.out.println(player1name + "'s turn! Here is your hand:" + player1hand);
             System.out.println("What card would you like to play?");
-            if (player1hand.contains(sc.nextLine())){
+            String playCard = sc.nextLine();
+            boolean playable = true;
+            if (player1hand.contains(playCard) && playable){
                 //check characteristics for topCard
 
                 if (topCard1.equals("WD4")){
@@ -366,12 +371,25 @@ public class Main {
                     }
                 }
                 //check characteristics for playable card
+
+
                 //if colours and numbers are the same, or for draw/skip if colours are the same, or for wild if no other option left
                 //do that later though
 
 
-                System.out.println("You do/do not have any playable cards.");
+            }
+            else{
+                System.out.println("That card is not playable. Would you like to try again (type \"play\"), or draw a new card(type \" draw \" ?)");
+                if (sc.nextLine().equals("play")){
+                    player1turn = false;
+                    player1turn = true;
+                }
+               else if (sc.nextLine().equals("draw")){
+                    //do something here
+                }
+
             }
         }
+        sc.close();
     }
 }
