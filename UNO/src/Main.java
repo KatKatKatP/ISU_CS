@@ -302,47 +302,75 @@ public class Main {
         int num = 0;
         while(turn){
             System.out.println(player1name + "'s turn! Here is your hand:" + player1hand);
-            //check qualifications for topCard
-            String[] specials = {"WD4", "W","RD","RS","YD","YS", "BD", "BS", "GD", "GS"};
-            if (topCard1.equals("WD4")){
-                wildDrawFour = true;
-            }
-            else if(topCard1.equals("W")){
-                wild = true;
-            }
-            else if(topCard1.contains("R")){
-                red = true;
-                if (topCard1.contains("D")){
-                    draw = true;
-                }
+            System.out.println("What card would you like to play?");
+            if (player1hand.contains(sc.nextLine())){
+                //check characteristics for topCard
 
-            }
-            else{
-                if (topCard1.contains("B")){
-                    blue = true;
-                    num = topCard1.charAt(2);
+                if (topCard1.equals("WD4")){
+                    wildDrawFour = true;
                 }
-                else if (topCard1.contains("R")){
+                else if(topCard1.equals("W")){
+                    wild = true;
+                }
+                else if(topCard1.contains("R")){
                     red = true;
-                    num = topCard1.charAt(2);
+                    if (topCard1.contains("D")){
+                        draw = true;
+                    }
+                    else{
+                        skip = true;
+                    }
                 }
-                else if (topCard1.contains("Y")){
+                else if(topCard1.contains("Y")){
                     yellow = true;
-                    num = topCard1.charAt(2);
+                    if (topCard1.contains("D")){
+                        draw = true;
+                    }
+                    else{
+                        skip = true;
+                    }
+                }else if(topCard1.contains("B")){
+                    blue = true;
+                    if (topCard1.contains("D")){
+                        draw = true;
+                    }
+                    else{
+                        skip = true;
+                    }
                 }
-                else if (topCard1.contains("G")){
+                else if(topCard1.contains("G")){
                     green = true;
-                    num = topCard1.charAt(2);
+                    if (topCard1.contains("D")){
+                        draw = true;
+                    }
+                    else{
+                        skip = true;
+                    }
                 }
+                else{
+                    if (topCard1.contains("B")){
+                        blue = true;
+                        num = topCard1.charAt(2);
+                    }
+                    else if (topCard1.contains("R")){
+                        red = true;
+                        num = topCard1.charAt(2);
+                    }
+                    else if (topCard1.contains("Y")){
+                        yellow = true;
+                        num = topCard1.charAt(2);
+                    }
+                    else if (topCard1.contains("G")){
+                        green = true;
+                        num = topCard1.charAt(2);
+                    }
+                }
+                //check characteristics for playable card
+                //if colours and numbers are the same, or for draw/skip if colours are the same, or for wild if no other option left
+                //do that later though
+
+                System.out.println("You do/do not have any playable cards.");
             }
-            //check qualifications for playable card
-            System.out.println("You do/do not have any playable cards.");
         }
-
-
-
-
-
-
     }
 }
