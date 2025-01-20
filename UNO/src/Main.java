@@ -442,11 +442,18 @@ public class Main {
                     }
                 }
 
-
+                System.out.println(red);
+                System.out.println(blue);
+                System.out.println(yellow);
+                System.out.println(green);
+                System.out.println(redPlay);
+                System.out.println(bluePlay);
+                System.out.println(yellowPlay);
+                System.out.println(greenPlay);
 
                 //if colours and numbers are the same, or for draw/skip if colours are the same, or for wild if no other option left
 
-                if (!(red && redPlay) ){
+                if (!(red && redPlay)){
                     playable = false;
                 }
                 else if(!(blue && bluePlay)){
