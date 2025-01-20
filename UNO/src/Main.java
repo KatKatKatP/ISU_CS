@@ -282,7 +282,7 @@ public class Main {
         }
 
         topCardDiscard = deck.get(0);
-        while (topCardDiscard.contains("S")) {
+        while (topCardDiscard.contains("W") || topCardDiscard.contains("S") || topCardDiscard.contains("D")) {
             deck.add(deck.get(0));
             deck.remove(0);
             topCardDiscard = deck.get(0);
@@ -314,7 +314,7 @@ public class Main {
         int num = 0;
         while(player1turn){
             System.out.println(player1name + "'s turn! Here is your hand:" + player1hand);
-            System.out.println("What card would you like to play?");
+            System.out.println("What card would you like to play? Or type \"draw\" to draw a card.");
             String playCard = sc.nextLine();
             boolean playable = true;
             if (player1hand.contains(playCard) && playable){
@@ -380,6 +380,7 @@ public class Main {
                     }
                 }
 
+                //check characteristics for playable card
 
                 if (playCard.equals("WD4")){
                     wildDrawFourPlay = true;
@@ -441,15 +442,30 @@ public class Main {
                     }
                 }
 
-                //check characteristics for playable card
 
 
                 //if colours and numbers are the same, or for draw/skip if colours are the same, or for wild if no other option left
-                //do that later though
 
-
+                if (!(red && redPlay) ){
+                    playable = false;
+                }
+                else if(!(blue && bluePlay)){
+                    playable = false;
+                }
+                else if(!(yellow && yellowPlay)){
+                    playable = false;
+                }
+                else if(!(green && greenPlay)){
+                    playable = false;
+                }
             }
+            //not sending me to the else statement
             else{
+                if (playCard.equals("draw")){
+                    deck.remove(topCardDeck);
+                    player1hand.add(topCardDeck);
+                    player1turn = false;
+                }
                 System.out.println("That card is not playable. Would you like to try again (type \"play\"), or draw a new card(type \"draw\" ?)");
                 String choice = sc.nextLine();
                 if (choice.equals("play")){
