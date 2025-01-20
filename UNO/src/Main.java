@@ -310,6 +310,7 @@ public class Main {
         boolean greenPlay = false;
         boolean drawPlay = false;
         boolean skipPlay = false;
+        int numPlay = 0;
         int num = 0;
         while(player1turn){
             System.out.println(player1name + "'s turn! Here is your hand:" + player1hand);
@@ -381,62 +382,62 @@ public class Main {
 
 
                 if (playCard.equals("WD4")){
-                    wildDrawFour = true;
+                    wildDrawFourPlay = true;
                 }
                 else if(playCard.equals("W")){
-                    wild = true;
+                    wildPlay = true;
                 }
                 else if(playCard.contains("R")){
-                    red = true;
+                    redPlay = true;
                     if (playCard.contains("D")){
-                        draw = true;
+                        drawPlay = true;
                     }
                     else{
-                        skip = true;
+                        skipPlay = true;
                     }
                 }
                 else if(playCard.contains("Y")){
-                    yellow = true;
+                    yellowPlay = true;
                     if (playCard.contains("D")){
-                        draw = true;
+                        drawPlay = true;
                     }
                     else{
-                        skip = true;
+                        skipPlay = true;
                     }
                 }else if(playCard.contains("B")){
-                    blue = true;
+                    bluePlay = true;
                     if (playCard.contains("D")){
-                        draw = true;
+                        drawPlay = true;
                     }
                     else{
-                        skip = true;
+                        skipPlay = true;
                     }
                 }
                 else if(playCard.contains("G")){
-                    green = true;
+                    greenPlay = true;
                     if (playCard.contains("D")){
-                        draw = true;
+                        drawPlay = true;
                     }
                     else{
-                        skip = true;
+                        skipPlay = true;
                     }
                 }
                 else{
                     if (playCard.contains("B")) {
-                        blue = true;
-                        num = playCard.charAt(2);
+                        bluePlay = true;
+                        numPlay = playCard.charAt(2);
                     }
                     else if (playCard.contains("R")){
-                        red = true;
-                        num = playCard.charAt(2);
+                        redPlay = true;
+                        numPlay = playCard.charAt(2);
                     }
                     else if (playCard.contains("Y")){
-                        yellow = true;
-                        num = playCard.charAt(2);
+                        yellowPlay = true;
+                        numPlay = playCard.charAt(2);
                     }
                     else if (playCard.contains("G")){
-                        green = true;
-                        num = playCard.charAt(2);
+                        greenPlay = true;
+                        numPlay = playCard.charAt(2);
                     }
                 }
 
