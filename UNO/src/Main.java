@@ -296,7 +296,6 @@ public class Main {
         boolean player1turn = true;
         int numPlay = 0;
         int num = 0;
-        boolean group = false;
         boolean turnEnd = false;
         boolean special = false;
         while(player1turn){
@@ -306,18 +305,17 @@ public class Main {
             String playCard = choice;
             System.out.println(playCard);
             while (player1hand.contains(playCard) && !turnEnd) {
-                //check for if the two are not special
-                if (playCard.length() == 2 && (playCard.contains("R") || playCard.contains("B") || playCard.contains("Y") || playCard.contains("G")) && !(playCard.contains("D") || playCard.contains("S"))){
-                    numPlay = playCard.charAt(1);
-                    special = false;
-                }
-                else if(topCardDiscard.length() == 2 && (topCardDiscard.contains("R") || topCardDiscard.contains("B") || topCardDiscard.contains("Y") || topCardDiscard.contains("G")) && !(topCardDiscard.contains("D") || topCardDiscard.contains("S"))){
-                    num = topCardDiscard.charAt(1);
-                    special = false;
-                }
-                else{
+                //special sensor, num play and num
+                if (playCard.contains("D") || playCard.contains("S") || playCard.contains("W")) {
                     special = true;
                 }
+                else{
+                    special = false;
+                    numPlay = playCard.charAt(1);
+                    num = topCardDiscard.charAt(1);
+                }
+
+                System.out.println(special);
                 //non-special: same colour, number doesn't matter
                 if (!special){
                     if (playCard.contains("R") && topCardDiscard.contains("R") && !((playCard.contains("D") || playCard.contains("S")))) {
@@ -347,6 +345,7 @@ public class Main {
                         turnEnd = true;
                         }
                     }
+                //special
                 else{
                     if (playCard.contains("WD4")){
                         //if no other options, then ... ( WIP )
@@ -363,11 +362,12 @@ public class Main {
                 }
 
             }
-            //not sending me to the else statement
+            //draw????
             if (choice.equals("draw")) {
                     deck.remove(topCardDeck);
                     player1hand.add(topCardDeck);
                     player1turn = false;
+                    topCardDeck = deck.get(0);
             }
         //relocate somewhere else
             //break while loop???
@@ -377,10 +377,7 @@ public class Main {
                     player1turn = false;
                     player1turn = true;
                 }
-               else if(choice.equals("draw")){
-                   deck.remove(topCardDeck);
-                   player1hand.add(topCardDeck);
-                }
+               System.out.println(player1hand);
 
             }
         sc.close();
