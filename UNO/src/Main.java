@@ -347,7 +347,18 @@ public class Main {
                         }
                     }
                 else{
-                    //special
+                    if (playCard.contains("WD4")){
+                        //if no other options, then ... ( WIP )
+                        playedDeck.add(playCard);
+                        player1hand.remove(playCard);
+                        System.out.println(player1name + "had played a wild draw four!" + player2name + "must draw four cards.");
+                        for (int i = 0; i < 4; i++) {
+                            player2hand.add(deck.get(deck.indexOf(0)));
+                        }
+                        //for now
+                        System.out.println(player2hand);
+                        System.out.println(player2name + "'s hand now has four added cards.");
+                    }
                 }
 
             }
