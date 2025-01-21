@@ -315,6 +315,7 @@ public class Main {
                 }
                 else{
                     special = true;
+
                 }
                 // while (!special){
                 //if colours and numbers are the same, or for draw/skip if colours are the same, or for wild if no other option left
