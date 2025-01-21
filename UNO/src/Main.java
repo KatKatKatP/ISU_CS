@@ -302,9 +302,10 @@ public class Main {
         while(player1turn){
             System.out.println(player1name + "'s turn! Here is your hand:" + player1hand);
             System.out.println("What card would you like to play? Or type \"draw\" to draw a card.");
-            String playCard = sc.nextLine();
+            choice = sc.nextLine();
+            String playCard = choice;
+            System.out.println(playCard);
             while (player1hand.contains(playCard) && !turnEnd) {
-
                 //check for if the two are not special
                 if (playCard.length() == 2 && (playCard.contains("R") || playCard.contains("B") || playCard.contains("Y") || playCard.contains("G")) && !(playCard.contains("D") || playCard.contains("S"))){
                     numPlay = playCard.charAt(1);
@@ -363,12 +364,13 @@ public class Main {
 
             }
             //not sending me to the else statement
-            {
-                if (playCard.equals("draw")){
+            if (choice.equals("draw")) {
                     deck.remove(topCardDeck);
                     player1hand.add(topCardDeck);
                     player1turn = false;
-                }
+            }
+        //relocate somewhere else
+            //break while loop???
                 System.out.println("That card is not playable. Would you like to try again (type \"play\"), or draw a new card(type \"draw\" ?)");
                 choice = sc.nextLine();
                 if (choice.equals("play")){
@@ -381,7 +383,6 @@ public class Main {
                 }
 
             }
-        }
         sc.close();
     }
 }
