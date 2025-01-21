@@ -316,154 +316,173 @@ public class Main {
             System.out.println(player1name + "'s turn! Here is your hand:" + player1hand);
             System.out.println("What card would you like to play? Or type \"draw\" to draw a card.");
             String playCard = sc.nextLine();
-            boolean playable = true;
-            if (player1hand.contains(playCard) && playable){
-                //check characteristics for topCard
-
-                if (topCardDiscard.equals("WD4")){
-                    wildDrawFour = true;
+            boolean turn = false;
+            if (player1hand.contains(playCard) && !turn) {
+//                //check characteristics for topCard
+//
+//                if (topCardDiscard.equals("WD4")){
+//                    wildDrawFour = true;
+//                }
+//                else if(topCardDiscard.equals("W")){
+//                    wild = true;
+//                }
+//                else if(topCardDiscard.contains("R")){
+//                    red = true;
+//                    if (topCardDiscard.contains("D")){
+//                        draw = true;
+//                    }
+//                    else{
+//                        skip = true;
+//                    }
+//                }
+//                else if(topCardDiscard.contains("Y")){
+//                    yellow = true;
+//                    if (topCardDiscard.contains("D")){
+//                        draw = true;
+//                    }
+//                    else{
+//                        skip = true;
+//                    }
+//                }else if(topCardDiscard.contains("B")){
+//                    blue = true;
+//                    if (topCardDiscard.contains("D")){
+//                        draw = true;
+//                    }
+//                    else{
+//                        skip = true;
+//                    }
+//                }
+//                else if(topCardDiscard.contains("G")){
+//                    green = true;
+//                    if (topCardDiscard.contains("D")){
+//                        draw = true;
+//                    }
+//                    else{
+//                        skip = true;
+//                    }
+//                }
+//                else{
+//                    if (topCardDiscard.contains("B")) {
+//                        blue = true;
+//                        num = topCardDiscard.charAt(2);
+//                    }
+//                    else if (topCardDiscard.contains("R")){
+//                        red = true;
+//                        num = topCardDiscard.charAt(2);
+//                    }
+//                    else if (topCardDiscard.contains("Y")){
+//                        yellow = true;
+//                        num = topCardDiscard.charAt(2);
+//                    }
+//                    else if (topCardDiscard.contains("G")){
+//                        green = true;
+//                        num = topCardDiscard.charAt(2);
+//                    }
+//                }
+//
+//                //check characteristics for playable card
+//
+//                if (playCard.equals("WD4")){
+//                    wildDrawFourPlay = true;
+//                }
+//                else if(playCard.equals("W")){
+//                    wildPlay = true;
+//                }
+//                else if(playCard.contains("R")){
+//                    redPlay = true;
+//                    if (playCard.contains("D")){
+//                        drawPlay = true;
+//                    }
+//                    else{
+//                        skipPlay = true;
+//                    }
+//                }
+//                else if(playCard.contains("Y")){
+//                    yellowPlay = true;
+//                    if (playCard.contains("D")){
+//                        drawPlay = true;
+//                    }
+//                    else{
+//                        skipPlay = true;
+//                    }
+//                }else if(playCard.contains("B")){
+//                    bluePlay = true;
+//                    if (playCard.contains("D")){
+//                        drawPlay = true;
+//                    }
+//                    else{
+//                        skipPlay = true;
+//                    }
+//                }
+//                else if(playCard.contains("G")){
+//                    greenPlay = true;
+//                    if (playCard.contains("D")){
+//                        drawPlay = true;
+//                    }
+//                    else{
+//                        skipPlay = true;
+//                    }
+//                }
+//                else{
+//                    if (playCard.contains("B")) {
+//                        bluePlay = true;
+//                        numPlay = playCard.charAt(2);
+//                    }
+//                    else if (playCard.contains("R")){
+//                        redPlay = true;
+//                        numPlay = playCard.charAt(2);
+//                    }
+//                    else if (playCard.contains("Y")){
+//                        yellowPlay = true;
+//                        numPlay = playCard.charAt(2);
+//                    }
+//                    else if (playCard.contains("G")){
+//                        greenPlay = true;
+//                        numPlay = playCard.charAt(2);
+//                    }
+//                }
+//
+//                System.out.println(red);
+//                System.out.println(blue);
+//                System.out.println(yellow);
+//                System.out.println(green);
+//                System.out.println(redPlay);
+//                System.out.println(bluePlay);
+//                System.out.println(yellowPlay);
+//                System.out.println(greenPlay);
+                //check for if the two are not special
+                if (playCard.length() == 2 && (playCard.contains("R") || playCard.contains("B") || playCard.contains("Y") || playCard.contains("G")) && !(playCard.contains("D") || playCard.contains("S"))){
+                    numPlay = playCard.charAt(1);
                 }
-                else if(topCardDiscard.equals("W")){
-                    wild = true;
+                else if(topCardDiscard.length() == 2 && (topCardDiscard.contains("R") || topCardDiscard.contains("B") || topCardDiscard.contains("Y") || topCardDiscard.contains("G")) && !(topCardDiscard.contains("D") || topCardDiscard.contains("S"))){
+                    num = topCardDiscard.charAt(1);
                 }
-                else if(topCardDiscard.contains("R")){
-                    red = true;
-                    if (topCardDiscard.contains("D")){
-                        draw = true;
-                    }
-                    else{
-                        skip = true;
-                    }
-                }
-                else if(topCardDiscard.contains("Y")){
-                    yellow = true;
-                    if (topCardDiscard.contains("D")){
-                        draw = true;
-                    }
-                    else{
-                        skip = true;
-                    }
-                }else if(topCardDiscard.contains("B")){
-                    blue = true;
-                    if (topCardDiscard.contains("D")){
-                        draw = true;
-                    }
-                    else{
-                        skip = true;
-                    }
-                }
-                else if(topCardDiscard.contains("G")){
-                    green = true;
-                    if (topCardDiscard.contains("D")){
-                        draw = true;
-                    }
-                    else{
-                        skip = true;
-                    }
-                }
-                else{
-                    if (topCardDiscard.contains("B")) {
-                        blue = true;
-                        num = topCardDiscard.charAt(2);
-                    }
-                    else if (topCardDiscard.contains("R")){
-                        red = true;
-                        num = topCardDiscard.charAt(2);
-                    }
-                    else if (topCardDiscard.contains("Y")){
-                        yellow = true;
-                        num = topCardDiscard.charAt(2);
-                    }
-                    else if (topCardDiscard.contains("G")){
-                        green = true;
-                        num = topCardDiscard.charAt(2);
-                    }
-                }
-
-                //check characteristics for playable card
-
-                if (playCard.equals("WD4")){
-                    wildDrawFourPlay = true;
-                }
-                else if(playCard.equals("W")){
-                    wildPlay = true;
-                }
-                else if(playCard.contains("R")){
-                    redPlay = true;
-                    if (playCard.contains("D")){
-                        drawPlay = true;
-                    }
-                    else{
-                        skipPlay = true;
-                    }
-                }
-                else if(playCard.contains("Y")){
-                    yellowPlay = true;
-                    if (playCard.contains("D")){
-                        drawPlay = true;
-                    }
-                    else{
-                        skipPlay = true;
-                    }
-                }else if(playCard.contains("B")){
-                    bluePlay = true;
-                    if (playCard.contains("D")){
-                        drawPlay = true;
-                    }
-                    else{
-                        skipPlay = true;
-                    }
-                }
-                else if(playCard.contains("G")){
-                    greenPlay = true;
-                    if (playCard.contains("D")){
-                        drawPlay = true;
-                    }
-                    else{
-                        skipPlay = true;
-                    }
-                }
-                else{
-                    if (playCard.contains("B")) {
-                        bluePlay = true;
-                        numPlay = playCard.charAt(2);
-                    }
-                    else if (playCard.contains("R")){
-                        redPlay = true;
-                        numPlay = playCard.charAt(2);
-                    }
-                    else if (playCard.contains("Y")){
-                        yellowPlay = true;
-                        numPlay = playCard.charAt(2);
-                    }
-                    else if (playCard.contains("G")){
-                        greenPlay = true;
-                        numPlay = playCard.charAt(2);
-                    }
-                }
-
-                System.out.println(red);
-                System.out.println(blue);
-                System.out.println(yellow);
-                System.out.println(green);
-                System.out.println(redPlay);
-                System.out.println(bluePlay);
-                System.out.println(yellowPlay);
-                System.out.println(greenPlay);
-
+                //WIP: make for special
                 //if colours and numbers are the same, or for draw/skip if colours are the same, or for wild if no other option left
+                //same colour, num doesn't matter( put this in the non-special if/else?
+                if (playCard.contains("R") && topCardDiscard.contains("R") && !((playCard.contains("D") || playCard.contains("S")))) {
 
-                if (!(red && redPlay)){
-                    playable = false;
+                    turn = true;
+
                 }
-                else if(!(blue && bluePlay)){
-                    playable = false;
+                if (playCard.contains("Y") && topCardDiscard.contains("Y") && !((playCard.contains("D") || playCard.contains("S")))) {
+                    playedDeck.add(playCard);
+                    player1hand.remove(playCard);
+                    turn = true;
                 }
-                else if(!(yellow && yellowPlay)){
-                    playable = false;
+                if (playCard.contains("B") && topCardDiscard.contains("B") && !((playCard.contains("D") || playCard.contains("S")))) {
+                    playedDeck.add(playCard);
+                    player1hand.remove(playCard);
+                    turn = true;
                 }
-                else if(!(green && greenPlay)){
-                    playable = false;
+                if (playCard.contains("G") && topCardDiscard.contains("G") && !((playCard.contains("D") || playCard.contains("S")))) {
+                    playedDeck.add(playCard);
+                    player1hand.remove(playCard);
+                    turn = true;
+                }
+                //same number, colour doesn't matter
+                if(num == numPlay){
+
                 }
             }
             //not sending me to the else statement
