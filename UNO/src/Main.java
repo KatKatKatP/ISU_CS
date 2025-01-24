@@ -312,6 +312,7 @@ public class Main {
                     num = topCardDiscard.charAt(1);
                 }
 
+
                 //non-special: same colour, number doesn't matter
                 if (!special){
                     if (playCard.contains("R") && topCardDiscard.contains("R") && !((playCard.contains("D") || playCard.contains("S")))) {
