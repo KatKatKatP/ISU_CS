@@ -259,12 +259,9 @@ public class Main {
             }
             deck.add(card);
         }
+
         String choice = "";
-        System.out.println("Here is the un-shuffled deck:");
-        System.out.println(deck);
         Collections.shuffle(deck);
-        System.out.println("Here is the shuffled deck:");
-        System.out.println(deck);
 
         int index = 0;
         String topCardDiscard;
@@ -288,7 +285,6 @@ public class Main {
             topCardDiscard = deck.get(0);
         }
         String topCardDeck = deck.get(1);
-        System.out.println("Here is the starting card:" + topCardDiscard);
         ArrayList<String> playedDeck = new ArrayList<String>();
         deck.remove(0);
         playedDeck.add(topCardDiscard);
@@ -300,10 +296,10 @@ public class Main {
         boolean special = false;
         while(player1turn){
             System.out.println(player1name + "'s turn! Here is your hand:" + player1hand);
+            System.out.println("The card on the top of the discard deck is:" + topCardDiscard);
             System.out.println("What card would you like to play? Or type \"draw\" to draw a card.");
             choice = sc.nextLine();
             String playCard = choice;
-            System.out.println(playCard);
             while (player1hand.contains(playCard) && !turnEnd) {
                 //special sensor, num play and num
                 if (playCard.contains("D") || playCard.contains("S") || playCard.contains("W")) {
@@ -315,36 +311,56 @@ public class Main {
                     num = topCardDiscard.charAt(1);
                 }
 
-                System.out.println(special);
                 //non-special: same colour, number doesn't matter
                 if (!special){
                     if (playCard.contains("R") && topCardDiscard.contains("R") && !((playCard.contains("D") || playCard.contains("S")))) {
                         playedDeck.add(playCard);
                         player1hand.remove(playCard);
                         turnEnd = true;
+                        topCardDiscard = playCard;
+
                     }
-                    if (playCard.contains("Y") && topCardDiscard.contains("Y") && !((playCard.contains("D") || playCard.contains("S")))) {
+                    else if (playCard.contains("Y") && topCardDiscard.contains("Y") && !((playCard.contains("D") || playCard.contains("S")))) {
                         playedDeck.add(playCard);
                         player1hand.remove(playCard);
                         turnEnd = true;
+                        topCardDiscard = playCard;
+
                     }
-                    if (playCard.contains("B") && topCardDiscard.contains("B") && !((playCard.contains("D") || playCard.contains("S")))) {
+                    else if (playCard.contains("B") && topCardDiscard.contains("B") && !((playCard.contains("D") || playCard.contains("S")))) {
                         playedDeck.add(playCard);
                         player1hand.remove(playCard);
                         turnEnd = true;
+                        topCardDiscard = playCard;
+
                     }
-                    if (playCard.contains("G") && topCardDiscard.contains("G") && !((playCard.contains("D") || playCard.contains("S")))) {
+                    else if (playCard.contains("G") && topCardDiscard.contains("G") && !((playCard.contains("D") || playCard.contains("S")))) {
                         playedDeck.add(playCard);
                         player1hand.remove(playCard);
                         turnEnd = true;
+                        topCardDiscard = playCard;
+
                     }
                     //non-special: same number, colour doesn't matter
-                    if(num == numPlay){
+                    else if(num == numPlay){
                         playedDeck.add(playCard);
                         player1hand.remove(playCard);
                         turnEnd = true;
+                        topCardDiscard = playCard;
+
+                    }
+                    else{
+                        System.out.println("That card is not playable. Would you like to try again (type \"play\"), or draw a new card(type \"draw\" ?)");
+                        choice = sc.nextLine();
+                        if (choice.equals("play")){
+                            player1turn = false;
+                            player1turn = true;
+                        }
+                        if (choice.equals("draw")){
+                            break;
                         }
                     }
+                }
                 //special
                 else{
                     if (playCard.contains("WD4")){
@@ -368,15 +384,11 @@ public class Main {
                     player1hand.add(topCardDeck);
                     player1turn = false;
                     topCardDeck = deck.get(0);
+                    System.out.println("You chose to draw a card. This is your hand now:" + player1hand);
             }
         //relocate somewhere else
             //break while loop???
-                System.out.println("That card is not playable. Would you like to try again (type \"play\"), or draw a new card(type \"draw\" ?)");
-                choice = sc.nextLine();
-                if (choice.equals("play")){
-                    player1turn = false;
-                    player1turn = true;
-                }
+
                System.out.println(player1hand);
 
             }
