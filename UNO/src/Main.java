@@ -459,7 +459,7 @@ public class Main {
                             playedDeck.add(playCard);
                             player1hand.remove(playCard);
                             System.out.println(player1name + " has played a draw card! " + player2name + " must draw one card.");
-                            for (int i = 0; i <= 1; i++) {
+                            for (int i = 0; i <= 2; i++) {
                                 deck.remove(topCardDeck);
                                 player2hand.add(topCardDeck);
                             }
@@ -477,7 +477,7 @@ public class Main {
                             playedDeck.add(playCard);
                             player1hand.remove(playCard);
                             System.out.println(player1name + " has played a draw card! " + player2name + " must draw one card.");
-                            for (int i = 0; i <=1; i++){
+                            for (int i = 0; i <=2; i++){
                                 deck.remove(topCardDeck);
                                 player2hand.add(topCardDeck);
                             }
@@ -494,7 +494,7 @@ public class Main {
                             playedDeck.add(playCard);
                             player1hand.remove(playCard);
                             System.out.println(player1name + " has played a draw card! " + player2name + " must draw one card.");
-                            for (int i = 0; i <=1; i++){
+                            for (int i = 0; i <=2; i++){
                                 deck.remove(topCardDeck);
                                 player2hand.add(topCardDeck);
                             }
@@ -510,7 +510,7 @@ public class Main {
                             playedDeck.add(playCard);
                             player1hand.remove(playCard);
                             System.out.println(player1name + " has played a draw card! " + player2name + " must draw one card.");
-                            for (int i = 0; i <=1; i++){
+                            for (int i = 0; i <=2; i++){
                                 deck.remove(topCardDeck);
                                 player2hand.add(topCardDeck);
                             }
