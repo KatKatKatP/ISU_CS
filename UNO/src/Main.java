@@ -387,7 +387,7 @@ public class Main {
                         // fix above finder
                         playedDeck.add(playCard);
                         player1hand.remove(playCard);
-                        System.out.println(player1name + "plays a wild draw four! " + player2name + " must draw four cards.");
+                        System.out.println(player1name + " plays a wild draw four! " + player2name + " must draw four cards.");
                         for (int i = 0; i < 4; i++) {
                             deck.remove(topCardDeck);
                             player2hand.add(topCardDeck);
