@@ -294,9 +294,10 @@ public class Main {
         int num = 0;
         boolean turnEnd = false;
         boolean special = false;
+        String colour = "";
         while(player1turn){
-            System.out.println(player1name + "'s turn! Here is your hand:" + player1hand);
-            System.out.println("The card on the top of the discard deck is:" + topCardDiscard);
+            System.out.println(player1name + "'s turn! Here is your hand: " + player1hand);
+            System.out.println("The card on the top of the discard deck is: " + topCardDiscard);
             System.out.println("What card would you like to play? Or type \"draw\" to draw a card.");
             choice = sc.nextLine();
             String playCard = choice;
@@ -349,6 +350,7 @@ public class Main {
                         topCardDiscard = playCard;
 
                     }
+                    //unplayable card
                     else{
                         System.out.println("That card is not playable. Would you like to try again (type \"play\"), or draw a new card(type \"draw\" ?)");
                         choice = sc.nextLine();
@@ -363,17 +365,55 @@ public class Main {
                 }
                 //special
                 else{
-                    if (playCard.contains("WD4")){
+                    if (playCard.contains("WD4")) {
                         //if no other options, then ... ( WIP )
                         playedDeck.add(playCard);
                         player1hand.remove(playCard);
-                        System.out.println(player1name + "had played a wild draw four!" + player2name + "must draw four cards.");
+                        System.out.println(player1name + "plays a wild draw four!" + player2name + "must draw four cards.");
+                        System.out.println(player2name + "'s hand was previously " + player2hand);
                         for (int i = 0; i < 4; i++) {
                             player2hand.add(deck.get(deck.indexOf(0)));
                         }
-                        //for now
-                        System.out.println(player2hand);
                         System.out.println(player2name + "'s hand now has four added cards.");
+                        System.out.println(player1name + ", what colour would you like the card to become? Input Y for yellow, R for red, B for blue, G for green.");
+                        choice = sc.nextLine();
+                        if (choice.equals("Y")) {
+                            playCard += "Y";
+                        }
+                        else if (choice.equals("R")) {
+                            playCard += "R";
+                        }
+                        else if (choice.equals("G")) {
+                            playCard += "G";
+                        }
+                        else if (choice.equals("B")){
+                            playCard += "B";
+                        }
+                        turnEnd = true;
+                        topCardDiscard = playCard;
+                    }
+
+                    else if (playCard.contains("W")){
+                        playedDeck.add(playCard);
+                        player1hand.remove(playCard);
+                        System.out.println(player1name + " plays a wild card! " + player1name + ", what colour would you like the card to become? Input Y for yellow, R for red, B for blue, G for green.");
+                        choice = sc.nextLine();
+                        if (choice.equals("Y")) {
+                            playCard += "Y";
+                        }
+                        else if (choice.equals("R")) {
+                            playCard += "R";
+                        }
+                        else if (choice.equals("G")) {
+                            playCard += "G";
+                        }
+                        else if (choice.equals("B")){
+                            playCard += "B";
+                        }
+                        turnEnd = true;
+                        topCardDiscard = playCard;
+                    }
+                    else if (playCard.contains("S")){
                     }
                 }
 
@@ -386,8 +426,6 @@ public class Main {
                     topCardDeck = deck.get(0);
                     System.out.println("You chose to draw a card. This is your hand now:" + player1hand);
             }
-        //relocate somewhere else
-            //break while loop???
 
                System.out.println(player1hand);
 
