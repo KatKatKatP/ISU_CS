@@ -370,7 +370,7 @@ public class Main {
                         //if no other options, then ... ( WIP )
                         for (String cardHand : player1hand) {
                             for (int i = 0; i <= 9; i++) {
-                                String numFinder = String.valueOf(i);
+                                String numFinder = Integer.toString(i);
                                 if (cardHand.contains(numFinder)){
                                     numPlay = playCard.charAt(1);
                                 }
