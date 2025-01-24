@@ -376,9 +376,7 @@ public class Main {
 
                         //if no other options, then ... ( WIP )
                         for (String cardHand : player1hand) {
-                            System.out.println("hello");
                             for (int i = 0; i <= 9; i++) {
-                                System.out.println("hi");
                                 String numFinder = Integer.toString(i);
                                 if (cardHand.contains(numFinder)){
                                     numsPlay.add(String.valueOf(playCard.charAt(1)));
@@ -400,7 +398,6 @@ public class Main {
                             System.out.println("You cannot play a wild draw four at this time, as you have other playable cards. Please play another card. ");
                             break;
                         }
-                        // fix above finder
                         else {
                             playedDeck.add(playCard);
                             player1hand.remove(playCard);
