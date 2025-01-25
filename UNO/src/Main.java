@@ -8,12 +8,11 @@ public class Main {
 
         System.out.println("Welcome to UNO! Would you like multi-player(answer with \"1\") or against an AI(answer with \"2\")?");
         int gameMode = sc.nextInt();
-        String playerName = sc.next();
+        String[] players = new String[sc.nextInt()];
         if (gameMode == 1) {
             boolean multiPlayer = true;
             System.out.println("How many players?");
-            String[] players = new String[sc.nextInt()];
-            for (int i = 0; i < players.length; i++) {
+            for (int i = 1; i <= players.length; i++) {
                 System.out.println("What is player " + i + "'s name?");
                 players[i] = sc.next();
             }
@@ -21,7 +20,7 @@ public class Main {
             boolean againstAI = true;
 
         }
-
+        ArrayList<String> nextPlayerHand = new ArrayList<String>();
         ArrayList<String> deck = new ArrayList<String>();
         ArrayList<String> discard = new ArrayList<String>();
         String card;
@@ -259,6 +258,7 @@ public class Main {
         String choice;
         Collections.shuffle(deck);
 
+        while (int j = 1; j <= players.length(); j++)
         int index = 0;
         String topCardDiscard;
 
@@ -388,13 +388,13 @@ public class Main {
                             }
                         }
 
-                        if ((playerHand.contains("R") && topCardDiscard.contains("R")) || (playerHand.contains("Y") && topCardDiscard.contains("Y")) || (player1hand.contains("B") && topCardDiscard.contains("B")) || (player1hand.contains("G") && topCardDiscard.contains("G")) || otherPlayableCards){
+                        if ((playerHand.contains("R") && topCardDiscard.contains("R")) || (playerHand.contains("Y") && topCardDiscard.contains("Y")) || (playerHand.contains("B") && topCardDiscard.contains("B")) || (playerHand.contains("G") && topCardDiscard.contains("G")) || otherPlayableCards){
                             System.out.println("You cannot play a wild draw four at this time, as you have other playable cards. Please play another card. ");
                             break;
                         }
                         else {
                             playedDeck.add(playCard);
-                            player1hand.remove(playCard);
+                            playerHand.remove(playCard);
                             System.out.println(playerName + " plays a wild draw four! The next player must draw four cards.");
                             for (int i = 0; i < 4; i++) {
                                 deck.remove(topCardDeck);
@@ -455,7 +455,7 @@ public class Main {
                             System.out.println(playerName + " has played a draw card! " + playerName + " must draw one card.");
                             for (int i = 0; i <= 2; i++) {
                                 deck.remove(topCardDeck);
-                                player2hand.add(topCardDeck);
+                                nextPlayerHand.add(topCardDeck);
                             }
                         }
                     }
@@ -473,7 +473,7 @@ public class Main {
                             System.out.println(playerName + " has played a draw card! The next player must draw two cards.");
                             for (int i = 0; i <=2; i++){
                                 deck.remove(topCardDeck);
-                                player2hand.add(topCardDeck);
+                                nextPlayerHand.add(topCardDeck);
                             }
                         }
                         else if (playCard.contains("S")){
@@ -490,7 +490,7 @@ public class Main {
                             System.out.println(playerName + " has played a draw card! The next player must draw two cards.");
                             for (int i = 0; i <=2; i++){
                                 deck.remove(topCardDeck);
-                                player2hand.add(topCardDeck);
+                                nextPlayerHand.add(topCardDeck);
                             }
                         } else if (playCard.contains("S")){
                             playedDeck.add(playCard);
@@ -506,8 +506,7 @@ public class Main {
                             System.out.println(playerName + " has played a draw card! The next player must draw two cards.");
                             for (int i = 0; i <=2; i++){
                                 deck.remove(topCardDeck);
-                                playerHandStore.String.valueOf(topCardDeck));
-//fix this please!!!!
+                                nextPlayerHand.add(topCardDeck);
                             }
                         }
                         else if (playCard.contains("S")){
