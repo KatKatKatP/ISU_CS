@@ -6,24 +6,20 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         //NAME: Katerina Praskurnin
 
-        System.out.println("Welcome to UNO! Would you like two-player(answer with \"1\") or against an AI(answer with \"2\")?");
-        String player1name = "";
-        String player2name = "";
+        System.out.println("Welcome to UNO! Would you like multi-player(answer with \"1\") or against an AI(answer with \"2\")?");
         int gameMode = sc.nextInt();
-
+        String playerName = sc.next();
         if (gameMode == 1) {
-            boolean twoPlayer = true;
-            sc.nextLine();
-            System.out.println("What is player one's name?");
-            player1name = sc.nextLine();
-            System.out.println("What is player two's name?");
-            player2name = sc.nextLine();
+            boolean multiPlayer = true;
+            System.out.println("How many players?");
+            String[] players = new String[sc.nextInt()];
+            for (int i = 0; i < players.length; i++) {
+                System.out.println("What is player " + i + "'s name?");
+                players[i] = sc.next();
+            }
         } else if (gameMode == 2) {
             boolean againstAI = true;
-            sc.nextLine();
-            System.out.println("What is your name?");
-            player1name = sc.nextLine();
-            player2name = "Computer";
+
         }
 
         ArrayList<String> deck = new ArrayList<String>();
@@ -265,18 +261,16 @@ public class Main {
 
         int index = 0;
         String topCardDiscard;
-        ArrayList<String> player1hand = new ArrayList<String>();
-        ArrayList<String> player2hand = new ArrayList<String>();
+
+        ArrayList<String> playerHand = new ArrayList<String>();
+        ArrayList<String> playerHandStore = new ArrayList<String>();
+
         for (int dealCard = 0; dealCard < 7; dealCard++) {
             topCardDiscard = deck.get(index);
-            player1hand.add(topCardDiscard);
+            playerHand.add(topCardDiscard);
             deck.remove(index);
         }
-        for (int dealCard = 0; dealCard < 7; dealCard++) {
-            topCardDiscard = deck.get(index);
-            player2hand.add(topCardDiscard);
-            deck.remove(index);
-        }
+
 
         topCardDiscard = deck.get(0);
         while (topCardDiscard.contains("W") || topCardDiscard.contains("S") || topCardDiscard.contains("D")) {
@@ -295,14 +289,14 @@ public class Main {
         boolean turnEnd = false;
         boolean special = false;
         while(player1turn){
-            System.out.println(player1name + "'s turn! Here is your hand: " + player1hand);
+            System.out.println(playerName + "'s turn! Here is your hand: " + playerHand);
             System.out.println("The card on the top of the discard deck is: " + topCardDiscard);
             System.out.println("What card would you like to play? Or type \"draw\" to draw a card.");
             choice = sc.nextLine();
             String playCard = choice;
             String colour = "";
             boolean otherPlayableCards = false;
-            while (player1hand.contains(playCard) && !turnEnd) {
+            while (playerHand.contains(playCard) && !turnEnd) {
                 //special sensor, num play and num
                 if (playCard.contains("D") || playCard.contains("S") || playCard.contains("W")) {
                     special = true;
@@ -317,28 +311,28 @@ public class Main {
                 if (!special){
                     if (playCard.contains("R") && topCardDiscard.contains("R") && !((playCard.contains("D") || playCard.contains("S")))) {
                         playedDeck.add(playCard);
-                        player1hand.remove(playCard);
+                        playerHand.remove(playCard);
                         turnEnd = true;
                         topCardDiscard = playCard;
 
                     }
                     else if (playCard.contains("Y") && topCardDiscard.contains("Y") && !((playCard.contains("D") || playCard.contains("S")))) {
                         playedDeck.add(playCard);
-                        player1hand.remove(playCard);
+                        playerHand.remove(playCard);
                         turnEnd = true;
                         topCardDiscard = playCard;
 
                     }
                     else if (playCard.contains("B") && topCardDiscard.contains("B") && !((playCard.contains("D") || playCard.contains("S")))) {
                         playedDeck.add(playCard);
-                        player1hand.remove(playCard);
+                        playerHand.remove(playCard);
                         turnEnd = true;
                         topCardDiscard = playCard;
 
                     }
                     else if (playCard.contains("G") && topCardDiscard.contains("G") && !((playCard.contains("D") || playCard.contains("S")))) {
                         playedDeck.add(playCard);
-                        player1hand.remove(playCard);
+                        playerHand.remove(playCard);
                         turnEnd = true;
                         topCardDiscard = playCard;
 
@@ -346,7 +340,7 @@ public class Main {
                     //non-special: same number, colour doesn't matter
                     else if(num == numPlay){
                         playedDeck.add(playCard);
-                        player1hand.remove(playCard);
+                        playerHand.remove(playCard);
                         turnEnd = true;
                         topCardDiscard = playCard;
 
@@ -356,13 +350,12 @@ public class Main {
                         System.out.println("That card is not playable. Would you like to try again (type \"play\"), or draw a new card(type \"draw\" ?)");
                         choice = sc.nextLine();
                         if (choice.equals("play")){
-                            System.out.println(player1name + "'s turn! Here is your hand: " + player1hand);
+                            System.out.println(playerName + "'s turn! Here is your hand: " + playerHand);
                             System.out.println("The card on the top of the discard deck is: " + topCardDiscard);
                             System.out.println("What card would you like to play? Or type \"draw\" to draw a card.");
                             choice = sc.nextLine();
                             playCard = choice;
                             player1turn = false;
-                            player1turn = true;
                         }
                         if (choice.equals("draw")){
                             break;
@@ -376,7 +369,7 @@ public class Main {
                     if (playCard.contains("WD4")) {
 
                         //if no other options, then ... ( WIP )
-                        for (String cardHand : player1hand) {
+                        for (String cardHand : playerHand) {
                             for (int i = 0; i <= 9; i++) {
                                 String numFinder = Integer.toString(i);
                                 if (cardHand.contains(numFinder)){
@@ -395,20 +388,20 @@ public class Main {
                             }
                         }
 
-                        if ((player1hand.contains("R") && topCardDiscard.contains("R")) || (player1hand.contains("Y") && topCardDiscard.contains("Y")) || (player1hand.contains("B") && topCardDiscard.contains("B")) || (player1hand.contains("G") && topCardDiscard.contains("G")) || otherPlayableCards){
+                        if ((playerHand.contains("R") && topCardDiscard.contains("R")) || (playerHand.contains("Y") && topCardDiscard.contains("Y")) || (player1hand.contains("B") && topCardDiscard.contains("B")) || (player1hand.contains("G") && topCardDiscard.contains("G")) || otherPlayableCards){
                             System.out.println("You cannot play a wild draw four at this time, as you have other playable cards. Please play another card. ");
                             break;
                         }
                         else {
                             playedDeck.add(playCard);
                             player1hand.remove(playCard);
-                            System.out.println(player1name + " plays a wild draw four! " + player2name + " must draw four cards.");
+                            System.out.println(playerName + " plays a wild draw four! The next player must draw four cards.");
                             for (int i = 0; i < 4; i++) {
                                 deck.remove(topCardDeck);
-                                player2hand.add(topCardDeck);
+                                playerHand.add(topCardDeck);
                             }
-                            System.out.println(player2name + "'s hand now has four added cards.");
-                            System.out.println(player1name + ", what colour would you like the card to become? Input Y for yellow, R for red, B for blue, G for green.");
+                            System.out.println("The next player's hand now has four added cards.");
+                            System.out.println(playerName + ", what colour would you like the card to become? Input Y for yellow, R for red, B for blue, G for green.");
                             colour = sc.nextLine();
                             switch (colour) {
                                 case "Y":
@@ -431,8 +424,8 @@ public class Main {
 
                     else if (playCard.contains("W")){
                         playedDeck.add(playCard);
-                        player1hand.remove(playCard);
-                        System.out.println(player1name + " plays a wild card! " + player1name + ", what colour would you like the card to become? Input Y for yellow, R for red, B for blue, G for green.");
+                        playerHand.remove(playCard);
+                        System.out.println(playerName + " plays a wild card! " + playerName + ", what colour would you like the card to become? Input Y for yellow, R for red, B for blue, G for green.");
                         colour = sc.nextLine();
 
                         switch(colour) {
@@ -458,8 +451,8 @@ public class Main {
                     if (playCard.contains("R")) {
                         if (playCard.contains("D")) {
                             playedDeck.add(playCard);
-                            player1hand.remove(playCard);
-                            System.out.println(player1name + " has played a draw card! " + player2name + " must draw one card.");
+                            playerHand.remove(playCard);
+                            System.out.println(playerName + " has played a draw card! " + playerName + " must draw one card.");
                             for (int i = 0; i <= 2; i++) {
                                 deck.remove(topCardDeck);
                                 player2hand.add(topCardDeck);
@@ -468,16 +461,16 @@ public class Main {
                     }
                     else if (playCard.contains("S")){
                         playedDeck.add(playCard);
-                        player1hand.remove(playCard);
-                        System.out.println(player1name + "has played a skip card! " + player2name + " must skip their turn.");
+                        playerHand.remove(playCard);
+                        System.out.println(playerName + "has played a skip card! The next player must skip their turn.");
                             // program a skip
                         }
                     }
                     else if (playCard.contains("B")){
                         if (playCard.contains("D")){
                             playedDeck.add(playCard);
-                            player1hand.remove(playCard);
-                            System.out.println(player1name + " has played a draw card! " + player2name + " must draw one card.");
+                            playerHand.remove(playCard);
+                            System.out.println(playerName + " has played a draw card! The next player must draw two cards.");
                             for (int i = 0; i <=2; i++){
                                 deck.remove(topCardDeck);
                                 player2hand.add(topCardDeck);
@@ -485,41 +478,42 @@ public class Main {
                         }
                         else if (playCard.contains("S")){
                             playedDeck.add(playCard);
-                            player1hand.remove(playCard);
-                            System.out.println(player1name + "has played a skip card! " + player2name + " must skip their turn.");
+                            playerHand.remove(playCard);
+                            System.out.println(playerName + "has played a skip card! The next player must skip their turn.");
                             // program a skip
                         }
                     }
                     else if (playCard.contains("G")){
                         if (playCard.contains("D")){
                             playedDeck.add(playCard);
-                            player1hand.remove(playCard);
-                            System.out.println(player1name + " has played a draw card! " + player2name + " must draw one card.");
+                            playerHand.remove(playCard);
+                            System.out.println(playerName + " has played a draw card! The next player must draw two cards.");
                             for (int i = 0; i <=2; i++){
                                 deck.remove(topCardDeck);
                                 player2hand.add(topCardDeck);
                             }
                         } else if (playCard.contains("S")){
                             playedDeck.add(playCard);
-                            player1hand.remove(playCard);
-                            System.out.println(player1name + "has played a skip card! " + player2name + " must skip their turn.");
+                            playerHand.remove(playCard);
+                            System.out.println(playerName + "has played a skip card! The next player must skip their turn.");
                             // program a skip
                         }
                     }
                     else if (playCard.contains("Y")){
                         if (playCard.contains("D")){
                             playedDeck.add(playCard);
-                            player1hand.remove(playCard);
-                            System.out.println(player1name + " has played a draw card! " + player2name + " must draw one card.");
+                            playerHand.remove(playCard);
+                            System.out.println(playerName + " has played a draw card! The next player must draw two cards.");
                             for (int i = 0; i <=2; i++){
                                 deck.remove(topCardDeck);
-                                player2hand.add(topCardDeck);
+                                playerHandStore.String.valueOf(topCardDeck));
+//fix this please!!!!
                             }
                         }
                         else if (playCard.contains("S")){
                             playedDeck.add(playCard);
-                            player1hand.remove(playCard);
-                            System.out.println(player1name + "has played a skip card! " + player2name + " must skip their turn.");
+                            playerHand.remove(playCard);
+                            System.out.println(playerName + "has played a skip card! The next player must skip their turn.");
                             // program a skip
                         }
                     }
@@ -527,7 +521,7 @@ public class Main {
             }
             if (choice.equals("draw")) {
                 deck.remove(topCardDeck);
-                player1hand.add(topCardDeck);
+                playerHand.add(topCardDeck);
                 String numsPlay = "";
                 String nums = "";
                     for (int i = 0; i <= 9; i++) {
@@ -548,25 +542,27 @@ public class Main {
                         otherPlayableCards = true;
                     }
             }
-            System.out.println(topCardDeck + topCardDiscard);
+
             if ((topCardDeck.contains("R") && topCardDiscard.contains("R")) || (topCardDeck.contains("Y") && topCardDiscard.contains("Y")) || (topCardDeck.contains("B") && topCardDiscard.contains("B")) || (topCardDeck.contains("G") && topCardDiscard.contains("G")) || otherPlayableCards) {
                 System.out.println("The card on the top of the discard deck is: " + topCardDiscard);
-                System.out.println("Your hand, with the added card, is now: " + player1hand);
+                System.out.println("Your hand, with the added card, is now: " + playerHand);
                 System.out.println("Your card is playable and you can choose to play it immediately. If you want to do so, input \"play\". Otherwise, input \"end turn\".");
                 choice = sc.nextLine();
                 if (choice.equals("play")) {
                     playedDeck.add(topCardDeck);
-                    player1hand.remove(topCardDeck);
+                    playerHand.remove(topCardDeck);
                     topCardDiscard = topCardDeck;
                     topCardDeck = deck.get(0);
                     System.out.println("You chose to play your card. The top card of the played deck is now: " + topCardDiscard);
                     player1turn = false;
                     topCardDeck = deck.get(0);
                 } else if (choice.equals("end turn")) {
-                    System.out.println("You chose to end your turn. This is your hand now:" + player1hand);
+                    System.out.println("You chose to end your turn. This is your hand now:" + playerHand);
                     player1turn = false;
                 }
             }
+            String playerHandStorage = String.valueOf(playerHand);
+            playerHandStore.add(playerHandStorage);
         }
         sc.close();
     }
