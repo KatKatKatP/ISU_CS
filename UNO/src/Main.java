@@ -257,8 +257,15 @@ public class Main {
 
         String choice;
         Collections.shuffle(deck);
+        int j = 1;
+        while ( j <= players.length){
 
-        while (int j = 1; j <= players.length(); j++)
+            j++;
+         if (j == players.length){
+             j = 1;
+            }
+
+        }
         int index = 0;
         String topCardDiscard;
 
