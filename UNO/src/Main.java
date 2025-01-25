@@ -11,10 +11,10 @@ public class Main {
         String player1name = "";
         String player2name = "";
         if (gameMode == 1) {
+            sc.nextLine();
             boolean multiPlayer = true;
             System.out.println("What is player one's name?");
-             player1name = sc.nextLine();
-             sc.nextLine();
+            player1name = sc.nextLine();
             System.out.println("What is player two's name?");
             player2name = sc.nextLine();
         } else if (gameMode == 2) {
@@ -282,7 +282,6 @@ public class Main {
         deck.remove(0);
         playedDeck.add(topCardDiscard);
 
-
         boolean player1turn = true;
         int numPlay = 0;
         int num = 0;
@@ -395,12 +394,12 @@ public class Main {
                         else {
                             playedDeck.add(playCard);
                             player1hand.remove(playCard);
-                            System.out.println(player1name + " plays a wild draw four! The next player must draw four cards.");
+                            System.out.println(player1name + " plays a wild draw four!" + player2name + " must draw four cards.");
                             for (int i = 0; i < 4; i++) {
                                 deck.remove(topCardDeck);
                                 player1hand.add(topCardDeck);
                             }
-                            System.out.println("The next player's hand now has four added cards.");
+                            System.out.println(player2name + "'s hand now has four added cards.");
                             System.out.println(player1name + ", what colour would you like the card to become? Input Y for yellow, R for red, B for blue, G for green.");
                             colour = sc.nextLine();
                             switch (colour) {
@@ -462,7 +461,7 @@ public class Main {
                     else if (playCard.contains("S")){
                         playedDeck.add(playCard);
                         player1hand.remove(playCard);
-                        System.out.println(player1name + "has played a skip card! The next player must skip their turn.");
+                        System.out.println(player1name + "has played a skip card! "+ player2name + " must skip their turn.");
                             // program a skip
                         }
                     }
@@ -470,7 +469,7 @@ public class Main {
                         if (playCard.contains("D")){
                             playedDeck.add(playCard);
                             player1hand.remove(playCard);
-                            System.out.println(player1name + " has played a draw card! The next player must draw two cards.");
+                            System.out.println(player1name + " has played a draw card! " + player2name + " must draw two cards.");
                             for (int i = 0; i <=2; i++){
                                 deck.remove(topCardDeck);
                                 player2hand.add(topCardDeck);
