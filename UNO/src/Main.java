@@ -270,6 +270,11 @@ public class Main {
             deck.remove(index);
         }
 
+        for (int dealCard = 0; dealCard < 7; dealCard++) {
+            topCardDiscard = deck.get(index);
+            player2hand.add(topCardDiscard);
+            deck.remove(index);
+        }
 
         topCardDiscard = deck.get(0);
         while (topCardDiscard.contains("W") || topCardDiscard.contains("S") || topCardDiscard.contains("D")) {
@@ -277,7 +282,9 @@ public class Main {
             deck.remove(0);
             topCardDiscard = deck.get(0);
         }
+
         String topCardDeck = deck.get(1);
+
         ArrayList<String> playedDeck = new ArrayList<String>();
         deck.remove(0);
         playedDeck.add(topCardDiscard);
@@ -451,7 +458,7 @@ public class Main {
                         if (playCard.contains("D")) {
                             playedDeck.add(playCard);
                             player1hand.remove(playCard);
-                            System.out.println(player1name + " has played a draw card! " + player1name + " must draw one card.");
+                            System.out.println(player1name + " has played a draw card! " + player1name + " must draw two cards.");
                             for (int i = 0; i <= 2; i++) {
                                 deck.remove(topCardDeck);
                                 player2hand.add(topCardDeck);
@@ -522,41 +529,42 @@ public class Main {
                 player1hand.add(topCardDeck);
                 String numsPlay = "";
                 String nums = "";
-                    for (int i = 0; i <= 9; i++) {
-                        String numFinder = Integer.toString(i);
-                        if (topCardDeck.contains(numFinder)) {
-                            numsPlay = numFinder;
-                            break;
-                        }
+                for (int i = 0; i <= 9; i++) {
+                    String numFinder = Integer.toString(i);
+                    if (topCardDeck.contains(numFinder)) {
+                        numsPlay = numFinder;
+                        break;
                     }
-                    for(int i = 0; i <= 9; i++){
-                        String numFinder = Integer.toString(i);
-                        if (topCardDiscard.contains(numFinder)){
-                            nums = numFinder;
-                            break;
-                        }
+                }
+                for (int i = 0; i <= 9; i++) {
+                    String numFinder = Integer.toString(i);
+                    if (topCardDiscard.contains(numFinder)) {
+                        nums = numFinder;
+                        break;
                     }
-                    if (nums.equals(numsPlay)){
-                        otherPlayableCards = true;
-                    }
-            }
+                }
+                if (nums.equals(numsPlay)) {
+                    otherPlayableCards = true;
+                }
 
-            if ((topCardDeck.contains("R") && topCardDiscard.contains("R")) || (topCardDeck.contains("Y") && topCardDiscard.contains("Y")) || (topCardDeck.contains("B") && topCardDiscard.contains("B")) || (topCardDeck.contains("G") && topCardDiscard.contains("G")) || otherPlayableCards) {
-                System.out.println("The card on the top of the discard deck is: " + topCardDiscard);
-                System.out.println("Your hand, with the added card, is now: " + player1hand);
-                System.out.println("Your card is playable and you can choose to play it immediately. If you want to do so, input \"play\". Otherwise, input \"end turn\".");
-                choice = sc.nextLine();
-                if (choice.equals("play")) {
-                    playedDeck.add(topCardDeck);
-                    player1hand.remove(topCardDeck);
-                    topCardDiscard = topCardDeck;
-                    topCardDeck = deck.get(0);
-                    System.out.println("You chose to play your card. The top card of the played deck is now: " + topCardDiscard);
-                    player1turn = false;
-                    topCardDeck = deck.get(0);
-                } else if (choice.equals("end turn")) {
-                    System.out.println("You chose to end your turn. This is your hand now:" + player1hand);
-                    player1turn = false;
+
+                if ((topCardDeck.contains("R") && topCardDiscard.contains("R")) || (topCardDeck.contains("Y") && topCardDiscard.contains("Y")) || (topCardDeck.contains("B") && topCardDiscard.contains("B")) || (topCardDeck.contains("G") && topCardDiscard.contains("G")) || otherPlayableCards) {
+                    System.out.println("The card on the top of the discard deck is: " + topCardDiscard);
+                    System.out.println("Your hand, with the added card, is now: " + player1hand);
+                    System.out.println("Your card is playable and you can choose to play it immediately. If you want to do so, input \"play\". Otherwise, input \"end turn\".");
+                    choice = sc.nextLine();
+                    if (choice.equals("play")) {
+                        playedDeck.add(topCardDeck);
+                        player1hand.remove(topCardDeck);
+                        topCardDiscard = topCardDeck;
+                        topCardDeck = deck.get(0);
+                        System.out.println("You chose to play your card. The top card of the played deck is now: " + topCardDiscard);
+                        player1turn = false;
+                        topCardDeck = deck.get(0);
+                    } else if (choice.equals("end turn")) {
+                        System.out.println("You chose to end your turn. This is your hand now:" + player1hand);
+                        player1turn = false;
+                    }
                 }
             }
         }
