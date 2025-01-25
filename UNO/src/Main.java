@@ -300,6 +300,7 @@ public class Main {
             System.out.println("What card would you like to play? Or type \"draw\" to draw a card.");
             choice = sc.nextLine();
             String playCard = choice;
+            String colour = "";
             boolean otherPlayableCards = false;
             while (player1hand.contains(playCard) && !turnEnd) {
                 //special sensor, num play and num
@@ -408,8 +409,8 @@ public class Main {
                             }
                             System.out.println(player2name + "'s hand now has four added cards.");
                             System.out.println(player1name + ", what colour would you like the card to become? Input Y for yellow, R for red, B for blue, G for green.");
-                            choice = sc.nextLine();
-                            switch (choice) {
+                            colour = sc.nextLine();
+                            switch (colour) {
                                 case "Y":
                                     playCard += "Y";
                                     break;
@@ -432,9 +433,9 @@ public class Main {
                         playedDeck.add(playCard);
                         player1hand.remove(playCard);
                         System.out.println(player1name + " plays a wild card! " + player1name + ", what colour would you like the card to become? Input Y for yellow, R for red, B for blue, G for green.");
-                        choice = sc.nextLine();
+                        colour = sc.nextLine();
 
-                        switch(choice) {
+                        switch(colour) {
                             case "Y":
                                 playCard += "Y";
                                 break;
@@ -527,7 +528,6 @@ public class Main {
             if (choice.equals("draw")) {
                 deck.remove(topCardDeck);
                 player1hand.add(topCardDeck);
-
                 String numsPlay = "";
                 String nums = "";
                     for (int i = 0; i <= 9; i++) {
@@ -541,31 +541,29 @@ public class Main {
                     }
                     if (nums.equals(numsPlay)){
                         otherPlayableCards = true;
-                        break;
                     }
             }
 
-                if ((topCardDeck.contains("R") && topCardDiscard.contains("R")) || (topCardDeck.contains("Y") && topCardDiscard.contains("Y")) || (topCardDeck.contains("B") && topCardDiscard.contains("B")) || (topCardDeck.contains("G") && topCardDiscard.contains("G")) || otherPlayableCards) {
+            if ((topCardDeck.contains("R") && topCardDiscard.contains("R")) || (topCardDeck.contains("Y") && topCardDiscard.contains("Y")) || (topCardDeck.contains("B") && topCardDiscard.contains("B")) || (topCardDeck.contains("G") && topCardDiscard.contains("G")) || otherPlayableCards) {
+                System.out.println("The card on the top of the discard deck is: " + topCardDiscard);
+                System.out.println("Your hand, with the added card, is now: " + player1hand);
                 System.out.println("Your card is playable and you can choose to play it immediately. If you want to do so, input \"play\". Otherwise, input \"end turn\".");
                 choice = sc.nextLine();
-                if (choice.equals("play")){
+                if (choice.equals("play")) {
                     playedDeck.add(topCardDeck);
                     player1hand.remove(topCardDeck);
                     topCardDiscard = topCardDeck;
                     topCardDeck = deck.get(0);
                     System.out.println("You chose to play your card.");
                     player1turn = false;
-
-                }
-                }
-                System.out.println("You chose to draw a card. This is your hand now:" + player1hand);
-                    player1hand.add(topCardDeck);
-                    deck.remove(topCardDeck);
                     topCardDeck = deck.get(0);
+                } else if (choice.equals("end turn")) {
+                    System.out.println("You chose to end your turn. This is your hand now:" + player1hand);
                     player1turn = false;
-
+                }
+            }
         }
-        //figure out choice??/
+        //figure out draw. code.
         sc.close();
     }
 }
