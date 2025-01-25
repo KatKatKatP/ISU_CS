@@ -256,10 +256,11 @@ public class Main {
         }
 
         String choice;
+        String playerName = "";
         Collections.shuffle(deck);
         int j = 1;
         while ( j <= players.length){
-
+            playerName = players[j];
             j++;
          if (j == players.length){
              j = 1;
