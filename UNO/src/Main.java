@@ -282,6 +282,7 @@ public class Main {
         deck.remove(0);
         playedDeck.add(topCardDiscard);
 
+
         boolean player1turn = true;
         int numPlay = 0;
         int num = 0;
