@@ -6,6 +6,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         //NAME: Katerina Praskurnin
 
+        //ask for gamemode and names
         System.out.println("Welcome to UNO! Would you like two-player(answer with \"1\") or against an AI(answer with \"2\")?");
         int gameMode = sc.nextInt();
         String player1name = "";
@@ -24,6 +25,7 @@ public class Main {
         ArrayList<String> deck = new ArrayList<String>();
         ArrayList<String> discard = new ArrayList<String>();
         String card;
+        //intitialize deck
         for (int i = 1; i <= 100; i++) {
             card = "";
             if (i <= 24) {
@@ -264,6 +266,8 @@ public class Main {
         ArrayList<String> player1hand = new ArrayList<String>();
         ArrayList<String> player2hand = new ArrayList<String>();
 
+        //deal cards to players
+
         for (int dealCard = 0; dealCard < 7; dealCard++) {
             topCardDiscard = deck.get(index);
             player1hand.add(topCardDiscard);
@@ -275,7 +279,7 @@ public class Main {
             player2hand.add(topCardDiscard);
             deck.remove(index);
         }
-
+        //check if the top card is special or not. If special, skip it
         topCardDiscard = deck.get(0);
         while (topCardDiscard.contains("W") || topCardDiscard.contains("S") || topCardDiscard.contains("D")) {
             deck.add(deck.get(0));
@@ -289,12 +293,15 @@ public class Main {
         deck.remove(0);
         playedDeck.add(topCardDiscard);
 
+        //commence turn
+
         boolean player1turn = true;
         int numPlay = 0;
         int num = 0;
         boolean turnEnd = false;
         boolean special = false;
         while(player1turn){
+            //play or draw a card as a first action
             System.out.println(player1name + "'s turn! Here is your hand: " + player1hand);
             System.out.println("The card on the top of the discard deck is: " + topCardDiscard);
             System.out.println("What card would you like to play? Or type \"draw\" to draw a card.");
@@ -374,7 +381,7 @@ public class Main {
                     ArrayList<String> numsDiscard = new ArrayList<String>();
                     if (playCard.contains("WD4")) {
 
-                        //if no other options, then ... ( WIP )
+                        //if no other options, then allow WD4.
                         for (String cardHand : player1hand) {
                             for (int i = 0; i <= 9; i++) {
                                 String numFinder = Integer.toString(i);
@@ -393,11 +400,12 @@ public class Main {
                                 break;
                             }
                         }
-
+                        //yes there are other options
                         if ((player1hand.contains("R") && topCardDiscard.contains("R")) || (player1hand.contains("Y") && topCardDiscard.contains("Y")) || (player1hand.contains("B") && topCardDiscard.contains("B")) || (player1hand.contains("G") && topCardDiscard.contains("G")) || otherPlayableCards){
                             System.out.println("You cannot play a wild draw four at this time, as you have other playable cards. Please play another card. ");
                             break;
                         }
+                        // no there aren't, allow WD4 to be played.
                         else {
                             playedDeck.add(playCard);
                             player1hand.remove(playCard);
@@ -427,7 +435,7 @@ public class Main {
                             }
                         }
                     }
-
+                    //same colour choice concept for a wild card instead of a wild draw four
                     else if (playCard.contains("W")){
                         playedDeck.add(playCard);
                         player1hand.remove(playCard);
@@ -453,7 +461,7 @@ public class Main {
 
                     turnEnd = true;
                     topCardDiscard = playCard;
-
+                    //draw and skip cards
                     if (playCard.contains("R")) {
                         if (playCard.contains("D")) {
                             playedDeck.add(playCard);
@@ -524,12 +532,14 @@ public class Main {
                     }
                 }
             }
+            //if at any time the choice was to draw a card, we get sent here
             if (choice.equals("draw")) {
                 deck.remove(topCardDeck);
                 player1hand.add(topCardDeck);
                 String numsPlay = "";
                 String nums = "";
                 for (int i = 0; i <= 9; i++) {
+                    //checks which number is in the topCardDeck(the card that was just given to the player )
                     String numFinder = Integer.toString(i);
                     if (topCardDeck.contains(numFinder)) {
                         numsPlay = numFinder;
@@ -537,6 +547,7 @@ public class Main {
                     }
                 }
                 for (int i = 0; i <= 9; i++) {
+                    //checks which number is in the topCardDiscard
                     String numFinder = Integer.toString(i);
                     if (topCardDiscard.contains(numFinder)) {
                         nums = numFinder;
@@ -544,6 +555,7 @@ public class Main {
                     }
                 }
                 if (nums.equals(numsPlay)) {
+                    //if they match, then the card just drawn can be played immediately. or they can end their turn.
                     otherPlayableCards = true;
                 }
 
