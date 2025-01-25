@@ -532,18 +532,23 @@ public class Main {
                 String nums = "";
                     for (int i = 0; i <= 9; i++) {
                         String numFinder = Integer.toString(i);
-                        if (topCardDeck.contains(numFinder)){
-                            numsPlay = String.valueOf(playCard.charAt(1));
+                        if (topCardDeck.contains(numFinder)) {
+                            numsPlay = numFinder;
+                            break;
                         }
+                    }
+                    for(int i = 0; i <= 9; i++){
+                        String numFinder = Integer.toString(i);
                         if (topCardDiscard.contains(numFinder)){
-                            nums = String.valueOf(playCard.charAt(1));
+                            nums = numFinder;
+                            break;
                         }
                     }
                     if (nums.equals(numsPlay)){
                         otherPlayableCards = true;
                     }
             }
-
+            System.out.println(topCardDeck + topCardDiscard);
             if ((topCardDeck.contains("R") && topCardDiscard.contains("R")) || (topCardDeck.contains("Y") && topCardDiscard.contains("Y")) || (topCardDeck.contains("B") && topCardDiscard.contains("B")) || (topCardDeck.contains("G") && topCardDiscard.contains("G")) || otherPlayableCards) {
                 System.out.println("The card on the top of the discard deck is: " + topCardDiscard);
                 System.out.println("Your hand, with the added card, is now: " + player1hand);
@@ -554,7 +559,7 @@ public class Main {
                     player1hand.remove(topCardDeck);
                     topCardDiscard = topCardDeck;
                     topCardDeck = deck.get(0);
-                    System.out.println("You chose to play your card.");
+                    System.out.println("You chose to play your card. The top card of the played deck is now: " + topCardDiscard);
                     player1turn = false;
                     topCardDeck = deck.get(0);
                 } else if (choice.equals("end turn")) {
@@ -563,7 +568,6 @@ public class Main {
                 }
             }
         }
-        //figure out draw. code.
         sc.close();
     }
 }
